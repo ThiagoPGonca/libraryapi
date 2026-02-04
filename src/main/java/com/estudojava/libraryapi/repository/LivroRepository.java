@@ -1,4 +1,9 @@
 package com.estudojava.libraryapi.repository;
 
-public class LivroRepository {
+import com.estudojava.libraryapi.model.Livro;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface LivroRepository extends JpaRepository<Livro, UUID> {
 }
