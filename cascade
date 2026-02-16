@@ -1,0 +1,21 @@
+cascade = define quais operações feitas na entidade “pai” vão ser automaticamente aplicadas às entidades “filhas” no relacionamento.:
+    All: É o somatório de todos os casos abaixo em um unico valor.
+    Detach: O JPA para de controlar a entidade pai e flha, ou seja, tanto o pai quanto o filho deixam de ser controlados pelo JPA.
+    Merge: QQuando fazemos merge no pai, o JPA também faz merge nos filhos. Merge não significa necessariamente que houve alteração. Ele apenas sincroniza o estado.
+    Persist: Quando mandamos salvar o pai o JPA persiste os filhos que estiverem associados a ele de forma automatica.
+    Refresh: Quando recarregamos o pai do banco, o JPA recarrega automaticamente os filhos.
+    Remove: Quando removemos o pai, o JPA remove automaticamente os filhos.
+
+Para implementar o cascade na prática basta adicionar o atributo cascade na classe pai.
+Exemplo:
+    OnetoOne
+        @OnetoOne(cascade = CascadeType.ALL)
+    ManytoOne
+    Geralmente não se usa remove aqui
+        @ManytoOne(cascade = CascadeType.Merge)
+    OnetoMany
+        @OnetoMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    ManytoMany
+        @ManyToMany(cascade = CascadeType.Merge)
+        
+O uso do Cascade tem que ser bem pensado

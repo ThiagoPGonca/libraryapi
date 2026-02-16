@@ -1,0 +1,6 @@
+Identações Eager (padrão) dentro de ManytoOne, quando você busca a entidade principal, o JPA já busca também as entidades relacionadas..
+Identações Lazy dentro de ManytoOne, A entidade relacionada só será buscada quando você realmente precisar dela.
+
+Para fazer uma consulta das informações usando lazy, podemos implemtar no método de consulta uma identaçao Transactional.
+Não faz o lazy carregar automaticamente. Ele mantém o contexto de persistência aberto, permitindo que o carregamento lazy
+ocorra quando necessário, evitando o erro LazyInitializationException.

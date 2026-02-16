@@ -36,7 +36,7 @@ public class Livro {
     private BigDecimal preco;
 
     //primeiro se refere a entidade atual e o segundo a entidade referenciada
-    @ManyToOne
+    @ManyToOne//(cascade = CascadeType.ALL)
     @JoinColumn(name = "autor_id")
     private Autor autor;
 
